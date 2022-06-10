@@ -26,6 +26,20 @@ export default function TextForm(props) {
     setText(event.target.value);
   };
 
+  const handleFirstCapital = () => {
+    const arr = Text.split(" ");
+    for(var i = 0; i<arr.length; i++){
+      arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+    }
+    const str = arr.join(" ");
+    setText(str);
+  };
+
+  const handleExtraSpaces = () => {
+    let newText = Text.split(/[ ]+/);
+    setText(newText.join(" "));
+  }
+
   const handleClearClick = () => {
     setText("");
   };
@@ -61,6 +75,10 @@ export default function TextForm(props) {
           Clear Text
         </button>
 
+        <button className="btn btn-primary mx-1 my-1" onClick={handleFirstCapital}>
+          Capitalized First Letter
+        </button>
+
         <button
           className="btn btn-primary mx-1 my-1"
           onClick={handleLowerCaseClick}
@@ -70,6 +88,10 @@ export default function TextForm(props) {
 
         <button className="btn btn-primary mx-1 my-1" onClick={handleCopy}>
           Copy Text
+        </button>
+
+        <button className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>
+          Remove Extra Spaces
         </button>
       </div>
 
